@@ -1,1 +1,35 @@
-<p>main-page works!</p>
+<div class="facts-graph">
+  <a [routerLink]="'/graph'">Facts graph</a>
+</div>
+
+<form (ngSubmit)="analyseProblems()">
+  <div class="checkboxes" *ngIf="facts && facts.length > 0">
+    <div class="checkbox" *ngFor="let fact of facts">
+      <mat-checkbox class="checkbox-height" [name]="fact.id" [(ngModel)]="fact.checked">
+        {{fact.id}}
+      </mat-checkbox>
+    </div>
+  </div>
+  <div class="analyse-button">
+    <button mat-raised-button color="primary" type="submit">Analyse</button>
+  </div>
+  <div class="data-table" *ngIf="errorSuggestion && errorSuggestion.length > 0">
+    <table mat-table [dataSource]="errorSuggestion" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="error">
+        <th mat-header-cell *matHeaderCellDef> Error </th>
+        <td mat-cell *matCellDef="let element"> {{element.error}} </td>
+      </ng-container>
+      <ng-container matColumnDef="suggestion">
+        <th mat-header-cell *matHeaderCellDef> Suggestion </th>
+        <td mat-cell *matCellDef="let element"> {{element.suggestion}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+  </div>
+</form>
+

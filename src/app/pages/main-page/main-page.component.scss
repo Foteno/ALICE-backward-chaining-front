@@ -1,0 +1,32 @@
+.facts-graph {
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 4px;
+}
+
+.checkboxes {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 200px;
+}
+
+.checkbox-height {
+  width: 10px;
+  ::ng-deep .mdc-form-field {
+    height: 25px;
+  }
+}
+
+.data-table {
+  padding: 10px;
+  max-width: 700px;
+}
+
+.analyse-button {
+  padding: 10px;
+}
